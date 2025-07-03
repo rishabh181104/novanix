@@ -7,6 +7,19 @@
       ./modules/google-chrome.nix
       ./modules/network.nix
       (./. + ".modules"+("/"+userSettings.wm)+".nix")
+      ./modules/system/dbus.nix
+      ./modules/system/time.nix
+      ./modules/system/fonts.nix
+      ./modules/system/opengl.nix
+      ./modules/system/stylix.nix
+      ./modules/system/wayland.nix
+      ./modules/system/bluetooth.nix
+      ./modules/user/stylix.nix
+      ./modules/user/git.nix
+      ./modules/user/power.nix
+      ./modules/user/steam.nix
+      ./modules/user/network.nix
+      ./modules/user/hyprland.nix
     ];
 
 

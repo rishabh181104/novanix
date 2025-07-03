@@ -1,19 +1,37 @@
 {
   description = "Flake for Nova";
 
-  outputs = inputs@{ self , ... }:
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    home-manager = {
+      url = "github:nix-community/home-manager/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    zen-browser = {
+      url = "github:youwen5/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    stylix = {
+      url = "github:danth/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+  };
+
+  outputs = inputs@{ self, nixpkgs, home-manager, stylix, ... }:
     let 
+    lib = nixpkgs.lib;
+  system = "x86_64-linux";
 
 ## ----- System Settings ---- ##
-    systemSettings = {
-      system = "x86_64-linux";
-      hostname = "nova";
-      timezone = "Asia/Kolkata";
-      locale = "en_IN.UTF-8";
-      bootMode = "uefi";
-      bootMountPath = "/boot";
-      gpuType = "nvidia";
-    };
+  systemSettings = {
+    inherit system;
+    hostname = "nova";
+    timezone = "Asia/Kolkata";
+    locale = "en_IN.UTF-8";
+    bootMode = "uefi";
+    bootMountPath = "/boot";
+    gpuType = "nvidia";
+  };
 
 ## ---- User Settings ---- ##
   userSettings = rec {
@@ -31,40 +49,42 @@
     editor = "zeditor";
   };
 
-  in {
-    homeConfigurations = {
-      user = home-manager.lib.homeManagerConfiguration {
-        extraSpecialArgs = {
-          inherit systemSettings;
-          inherit userSettings;
-        };
-      };
-    };
-
-    nixosConfigurations = {
-      system = lib.nixosSystem {
-        system = systemSettings.system;
-        specialArgs = {
-          inherit systemSettings;
-          inherit userSettings;
-        };
-      };
-    };
+  pkgs = import nixpkgs {
+    inherit system;
+    config.allowUnfree = true;
   };
+  in {
+# Home Manager configuration
+    homeConfigurations."${userSettings.username}" = home-manager.lib.homeManagerConfiguration {
+      inherit pkgs;
+      modules = [
+        ./home-manager/home.nix  # Your home-manager configuration
+          stylix.homeManagerModules.stylix
+      ];
+      extraSpecialArgs = {
+        inherit inputs systemSettings userSettings;
+      };
+    };
 
-  inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    home-manager = {
-      url = "github:nix-community/home-manager/master";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    zen-browser = {
-      url = "github:youwen5/zen-browser-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    stylix = {
-      url = "github:danth/stylix";
-      inputs.nixpkgs.follows = "nixpkgs";
+# NixOS configuration
+    nixosConfigurations.nova = nixpkgs.lib.nixosSystem {
+      inherit system;
+      specialArgs = { inherit inputs systemSettings userSettings; };
+      modules = [
+        ./configuration.nix  # Your system configuration
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.${userSettings.username} = {
+              imports = [
+                ./home-manager/home.nix
+                  stylix.homeManagerModules.stylix
+              ];
+            };
+          }
+      stylix.nixosModules.stylix
+      ];
     };
   };
 }
