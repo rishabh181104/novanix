@@ -7,7 +7,7 @@ backgroundImage = builtins.readFile (./. + "../../themes"+("/"+userSettings.them
 in
 {
 
-  imports = [ inputs.stylix.homeManagerModules.stylix ];
+  imports = [ inputs.stylix.homeModules.stylix ];
 
   stylix.autoEnable = false;
   stylix.polarity = themePolarity;

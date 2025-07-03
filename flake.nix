@@ -59,7 +59,7 @@
       inherit pkgs;
       modules = [
         ./home-manager/home.nix  # Your home-manager configuration
-          stylix.homeManagerModules.stylix
+          stylix.homeModules.stylix
       ];
       extraSpecialArgs = {
         inherit inputs systemSettings userSettings;
