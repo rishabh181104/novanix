@@ -5,7 +5,6 @@
     ./hardware.nix
       ./modules/browser/brave.nix
       ./modules/browser/google-chrome.nix
-      (./. + ".modules/user"+("/"+userSettings.wm)+".nix")
       ./modules/system/dbus.nix
       ./modules/system/time.nix
       ./modules/system/fonts.nix
@@ -18,6 +17,7 @@
       ./modules/user/power.nix
       ./modules/user/steam.nix
       ./modules/user/network.nix
+      ./modules/user/hyprland.nix
     ];
 
 
