@@ -1,8 +1,8 @@
 {
   description = "Flake for Nova";
 
-  outputs = inputs@{ self , ... };
-  let 
+  outputs = inputs@{ self , ... }:
+    let 
 
 ## ----- System Settings ---- ##
     systemSettings = {
