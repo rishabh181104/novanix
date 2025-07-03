@@ -81,7 +81,7 @@
     isNormalUser = true;
     shell = pkgs.fish;
     description = userSettings.name;
-    extraGroups = [ "networkmanager" "libvirtd "kvm "wheel" "input" "dialout" "video" "render" ];
+    extraGroups = [ "networkmanager" "libvirtd" "kvm" "wheel" "input" "dialout" "video" "render" ];
     packages = with pkgs; [
       fish
     ];
