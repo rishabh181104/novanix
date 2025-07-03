@@ -128,12 +128,6 @@
     open = false; # Use proprietary kernel modules (uncomment if needed for older GPUs)
   };
 
-# Setup for Hyprland
-  programs.hyprland = {
-    enable = true;
-    xwayland.enable = true;
-  };
-
 # Picom
   services.picom.enable = true;
 
