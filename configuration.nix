@@ -153,7 +153,6 @@
       home-manager
       wpa_supplicant
       dbus
-      dconf
   ];
 
 # Leave it unchaged plz
