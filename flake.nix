@@ -79,7 +79,7 @@
             home-manager.users.${userSettings.username} = {
               imports = [
                 ./home-manager/home.nix
-                  stylix.homeManagerModules.stylix
+                  stylix.homeModules.stylix
               ];
             };
           }

@@ -1,9 +1,9 @@
 { config, lib, pkgs, inputs, userSettings, ... }:
 
 let
-themePath = "../../../themes"+("/"+userSettings.theme+"/"+userSettings.theme)+".yaml";
-themePolarity = lib.removeSuffix "\n" (builtins.readFile (./. + "../../../themes"+("/"+userSettings.theme)+"/polarity.txt"));
-backgroundImage = builtins.readFile (./. + "../../../themes"+("/"+userSettings.theme)+"/background.png");
+themePath = "../../themes"+("/"+userSettings.theme+"/"+userSettings.theme)+".yaml";
+themePolarity = lib.removeSuffix "\n" (builtins.readFile (./. + "../../themes"+("/"+userSettings.theme)+"/polarity.txt"));
+backgroundImage = builtins.readFile (./. + "../../themes"+("/"+userSettings.theme)+"/background.png");
 in
 {
 
@@ -11,8 +11,8 @@ in
 
   stylix.autoEnable = false;
   stylix.polarity = themePolarity;
-  stylix.image = backgroundImage
-    stylix.base16Scheme = ./. + themePath;
+  stylix.image = backgroundImage;
+  stylix.base16Scheme = ./. + themePath;
 
   stylix.fonts = {
     monospace = {
