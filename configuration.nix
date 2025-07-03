@@ -1,11 +1,10 @@
-{ config, pkgs, lib, systemSettings, userSettings, ... };
+{ config, pkgs, lib, systemSettings, userSettings, ... }:
 {
   imports =
     [
     ./hardware.nix
-      ./modules/brave.nix
-      ./modules/google-chrome.nix
-      ./modules/network.nix
+      ./modules/browser/brave.nix
+      ./modules/browser/google-chrome.nix
       (./. + ".modules"+("/"+userSettings.wm)+".nix")
       ./modules/system/dbus.nix
       ./modules/system/time.nix
