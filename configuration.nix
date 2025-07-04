@@ -2,7 +2,7 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, inputs, ... }:
+{ config, lib, pkgs, inputs, lib, ... }:
 # let
 # sources = import ./nix/sources.nix;
 # lanzaboote = import sources.lanzaboote;
@@ -12,15 +12,15 @@
     ./hardware.nix
   ];
 
-  networking.hostName = "nix-ste";
+  networking.hostName = shared.userName;
   networking.networkmanager.enable = true;
   programs.nm-applet.enable = true;
 # networking.wireless.enable = true;
 
 # Set your time zone.
-  time.timeZone = "Asia/Kolkata";
+  time.timeZone = shared.timeZone;
 # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.ste = {
+  users.users.${shared.userName} = {
     isNormalUser = true;
     shell = pkgs.fish;
     extraGroups = [ "wheel" "networkmanager" "libvirtd" "kvm" ]; # Enable ‘sudo’ for the user.

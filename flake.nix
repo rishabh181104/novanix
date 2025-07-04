@@ -44,8 +44,9 @@
           useUserPackages = true;
           extraSpecialArgs = { inherit shared inputs; };  # Pass to Home Manager
             users.${shared.userName} = {
-              imports = [ ./home.nix ];
-# Home Manager options here...
+              imports = [ 
+              ./home.nix
+              ];
             };
         };
       }
