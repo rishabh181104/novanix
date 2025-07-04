@@ -21,6 +21,7 @@
         userName = "nova";          # Change to your username
         system = "x86_64-linux";    # Change architecture if needed
         theme = "dracula";
+        timeZone = "Asia/Kolkata";
         # wallpaper = ./themes/${theme}/background.png;
       };
       lib = nixpkgs.lib;
