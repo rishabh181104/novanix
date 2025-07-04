@@ -1,9 +1,5 @@
 #!/usr/bin/env bash
 
-if [ "$(id -u)" -ne 0 ]; then
-  exec sudo "$0" "$@"
-fi
-
 echo "Updating System"
 sudo nixos-rebuild switch --flake .#novanix
 
@@ -13,4 +9,4 @@ nix-channel --update
 nix-shell '<home-manager>' -A install
 
 echo "Updating Home-manager"
-home-manager --switch --flake .nova
+home-manager switch --flake .#nova

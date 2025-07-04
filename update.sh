@@ -1,9 +1,5 @@
 #!/usr/bin/env bash
 
-if [ "$(id -u)" -ne 0 ]; then
-  exec sudo "$0" "$@"
-fi
-
 echo "Updating Flake"
 sudo nix flake update
 
