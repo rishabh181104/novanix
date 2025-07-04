@@ -1,9 +1,9 @@
-{ config, pkgs, shared, homeDirectory, ... }:
+{ config, pkgs, shared, lib, homeDirectory, ... }:
 
 {
 
-  home.username = shared.userName;
-  home.homeDirectory = "/home/${shared.userName}";
+  home.username = lib.mkForce shared.userName;
+  home.homeDirectory = lib.mkForce "/home/${shared.userName}";
 
   xdg.configFile = {
     "hypr" = {
