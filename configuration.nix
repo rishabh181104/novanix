@@ -12,7 +12,7 @@
     ./hardware.nix
   ];
 
-  networking.hostName = shared.userName;
+  networking.hostName = shared.hostName;
   networking.networkmanager.enable = true;
   programs.nm-applet.enable = true;
 # networking.wireless.enable = true;
