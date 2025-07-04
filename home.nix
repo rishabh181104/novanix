@@ -54,13 +54,16 @@
       source = ./dotfiles/mako;
       recursive = true;
     };
+    "starship.toml" = {
+      source = ./dotfiles/starship.toml;
+      recursive = true;
+    };
   };
 
 # Files for home directory
   home.file = {
 #   ".bashrc".source = ./dotfiles/bashrc;
 #   ".tmux.conf".source = ./dotfiles/tmux.conf;
-    "starship.toml".source = ./dotfiles/starship.toml;
   };
 
   home.stateVersion = "25.05"; # Please read the comment before changing.
