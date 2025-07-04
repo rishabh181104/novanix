@@ -1,4 +1,4 @@
-{ config, pkgs, userSettings, ... }:
+{ config, home-manager, pkgs, userSettings, ... }:
 
 {
 # Home Manager needs a bit of information about you and the paths it should
@@ -16,7 +16,7 @@
 # Terminals
       alacritty kitty foot
 # some tools for daily use
-      bat bc brightnessctl ripgrep keychain wl-clipboard xclip gnome-keyring psmisc mupdf
+      bat bc brightnessctl ripgrep keychain wl-clipboard xclip psmisc mupdf
 # Shells
       fish zsh bash starship
 # Tools for files in another format
@@ -26,7 +26,7 @@
 # For Browser
       brave google-chrome
 # Code Editors
-      code-cursor zed-editor vim neovim
+      zed-editor vim neovim
 # git
       git lazygit
 # File Manager
@@ -48,7 +48,7 @@
 # bar
       waybar
 # themes 
-      flat-remix-gtk papirus-icon-theme
+      papirus-icon-theme
 # audio
       pavucontrol jamesdsp
 # for video and images
@@ -104,6 +104,5 @@
 
 # i like to use sometimes
       stirling-pdf thunderbird libreoffice-fresh whatsie discord unzip gnumake
-      ])
-
+      ]);
 }

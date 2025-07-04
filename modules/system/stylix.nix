@@ -1,10 +1,10 @@
-{ lib, pkgs, inputs, userSettings, ... }:
+{ lib, home-manager, pkgs, inputs, userSettings, ... }:
 
 let
-themePath = "../../themes/"+userSettings.theme+"/"+userSettings.theme+".yaml";
-themePolarity = lib.removeSuffix "\n" (builtins.readFile (./. + "../../themes"+("/"+userSettings.theme)+"/polarity.txt"));
+themePath = "./../../../themes/"+userSettings.theme+"/"+userSettings.theme+".yaml";
+themePolarity = lib.removeSuffix "\n" (builtins.readFile (./. + "./../../../themes"+("/"+userSettings.theme)+"/polarity.txt"));
 myLightDMTheme = if themePolarity == "light" then "Adwaita" else "Adwaita-dark";
-backgroundImage = builtins.readFile (./. + "../../themes"+("/"+userSettings.theme)+"/background.png");
+backgroundImage = builtins.readFile (./. + "./../../../themes"+("/"+userSettings.theme)+"/background.png");
 in
 {
   imports = [ inputs.stylix.nixosModules.stylix ];

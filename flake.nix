@@ -39,7 +39,7 @@
     name = "Rishabh";
     email = "rishabhhaldiya18@gmail.com";
     dotfilesDir = "~/novanix";
-    theme = "io";
+    theme = "alph";
     wm = "hyprland";
     wmType = if (( wm == "hyprland") || (wm == "plasma")) then "wayland" else "x11";
     browser = "brave";
@@ -58,8 +58,7 @@
     homeConfigurations."${userSettings.username}" = home-manager.lib.homeManagerConfiguration {
       inherit pkgs;
       modules = [
-        ./home-manager/home.nix  # Your home-manager configuration
-          stylix.homeModules.stylix
+        ./home.nix  # Your home-manager configuration
       ];
       extraSpecialArgs = {
         inherit inputs systemSettings userSettings;
@@ -78,8 +77,7 @@
             home-manager.useUserPackages = true;
             home-manager.users.${userSettings.username} = {
               imports = [
-                ./home-manager/home.nix
-                  stylix.homeModules.stylix
+                ./home.nix
               ];
             };
           }

@@ -1,18 +1,71 @@
-{ config, lib, pkgs, inputs, userSettings, ... }:
+{ config, home-manager, lib, pkgs, inputs, userSettings, ... }:
 
 let
-themePath = "../../themes"+("/"+userSettings.theme+"/"+userSettings.theme)+".yaml";
-themePolarity = lib.removeSuffix "\n" (builtins.readFile (./. + "../../themes"+("/"+userSettings.theme)+"/polarity.txt"));
-backgroundImage = builtins.readFile (./. + "../../themes"+("/"+userSettings.theme)+"/background.png");
+themePath = "./../../../themes"+("/"+userSettings.theme+"/"+userSettings.theme)+".yaml";
+themePolarity = lib.removeSuffix "\n" (builtins.readFile (./. + "./../../../themes"+("/"+userSettings.theme)+"/polarity.txt"));
+backgroundImage = builtins.readFile (./. + "./../../../themes"+("/"+userSettings.theme)+"/background.png");
 in
 {
 
-  imports = [ inputs.stylix.homeModules.stylix ];
+# Manual theme configuration without Stylix to avoid dconf issues
+# This will be handled by the system-level Stylix configuration instead
 
+# Set up basic terminal colors manually
+  programs.alacritty.settings = {
+    colors = {
+      primary.background = "#1a1a1a";  # Default dark background
+        primary.foreground = "#ffffff";  # Default white text
+        cursor.text = "#1a1a1a";
+      cursor.cursor = "#ffffff";
+      normal.black = "#1a1a1a";
+      normal.red = "#ff5555";
+      normal.green = "#50fa7b";
+      normal.yellow = "#f1fa8c";
+      normal.blue = "#bd93f9";
+      normal.magenta = "#ff79c6";
+      normal.cyan = "#8be9fd";
+      normal.white = "#f8f8f2";
+      bright.black = "#6272a4";
+      bright.red = "#ff6e6e";
+      bright.green = "#69ff94";
+      bright.yellow = "#ffffa5";
+      bright.blue = "#d6acff";
+      bright.magenta = "#ff92df";
+      bright.cyan = "#a4ffff";
+      bright.white = "#ffffff";
+    };
+    font.size = 18;
+    font.normal.family = userSettings.font;
+  };
+
+# Enable only non-GNOME targets
+  stylix.targets.kitty.enable = true;
+  stylix.targets.rofi.enable = if (userSettings.wmType == "wayland") then true else false;
+
+# Wallpaper configuration
+# home.file.".config/hypr/hyprpaper.conf".text = ''
+#   preload = ${backgroundImage}
+# wallpaper = ,${backgroundImage}
+# '';
+
+# Blacklist problematic modules that require dconf
   stylix.autoEnable = false;
   stylix.polarity = themePolarity;
   stylix.image = backgroundImage;
   stylix.base16Scheme = ./. + themePath;
+
+# Explicitly disable all GNOME-related targets that require dconf
+  stylix.targets.gnome-text-editor.enable = false;
+  stylix.targets.gedit.enable = false;
+  stylix.targets.gnome.enable = false;
+  stylix.targets.gtk.enable = false;
+
+# Override Stylix's module loading to exclude problematic modules
+  _module.args.stylixBlacklist = [
+    "gnome-text-editor"
+      "gedit" 
+      "gnome"
+  ];
 
   stylix.fonts = {
     monospace = {
@@ -39,48 +92,6 @@ in
     };
   };
 
-  stylix.targets.alacritty.enable = false;
-  programs.alacritty.settings = {
-    colors = {
-# TODO revisit these color mappings
-# these are just the default provided from stylix
-# but declared directly due to alacritty v3.0 breakage
-      primary.background = "#"+config.lib.stylix.colors.base00;
-      primary.foreground = "#"+config.lib.stylix.colors.base07;
-      cursor.text = "#"+config.lib.stylix.colors.base00;
-      cursor.cursor = "#"+config.lib.stylix.colors.base07;
-      normal.black = "#"+config.lib.stylix.colors.base00;
-      normal.red = "#"+config.lib.stylix.colors.base08;
-      normal.green = "#"+config.lib.stylix.colors.base0B;
-      normal.yellow = "#"+config.lib.stylix.colors.base0A;
-      normal.blue = "#"+config.lib.stylix.colors.base0D;
-      normal.magenta = "#"+config.lib.stylix.colors.base0E;
-      normal.cyan = "#"+config.lib.stylix.colors.base0B;
-      normal.white = "#"+config.lib.stylix.colors.base05;
-      bright.black = "#"+config.lib.stylix.colors.base03;
-      bright.red = "#"+config.lib.stylix.colors.base09;
-      bright.green = "#"+config.lib.stylix.colors.base01;
-      bright.yellow = "#"+config.lib.stylix.colors.base02;
-      bright.blue = "#"+config.lib.stylix.colors.base04;
-      bright.magenta = "#"+config.lib.stylix.colors.base06;
-      bright.cyan = "#"+config.lib.stylix.colors.base0F;
-      bright.white = "#"+config.lib.stylix.colors.base07;
-    };
-    font.size = config.stylix.fonts.sizes.terminal;
-    font.normal.family = userSettings.font;
-  };
-  stylix.targets.kitty.enable = true;
-# stylix.targets.gtk.enable = true;
-  stylix.targets.rofi.enable = if (userSettings.wmType == "wayland") then true else false;
-  home.file.".config/hypr/hyprpaper.conf".text = ''
-    preload = ''+config.stylix.image+''
-
-    wallpaper = ,''+config.stylix.image+''
-
-    '';
-  home.packages = with pkgs; [
-    libsForQt5.qt5ct pkgs.libsForQt5.breeze-qt5 libsForQt5.breeze-icons pkgs.noto-fonts-monochrome-emoji
-  ];
   qt = {
     enable = true;
     style.package = pkgs.libsForQt5.breeze-qt5;

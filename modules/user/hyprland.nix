@@ -1,11 +1,12 @@
-{ pkgs, lib, ... }:
+{ pkgs, home-manager, lib, ... }:
 {
 # Security
   security = {
     pam.services.login.enableGnomeKeyring = true;
   };
 
-  services.gnome.gnome-keyring.enable = true;
+# Note: gnome-keyring is installed as a package in home.nix
+# The service is not needed for basic functionality
 
   programs = {
     hyprland = {

@@ -3,8 +3,6 @@
   imports =
     [
     ./hardware.nix
-      ./modules/browser/brave.nix
-      ./modules/browser/google-chrome.nix
       ./modules/system/dbus.nix
       ./modules/system/time.nix
       ./modules/system/fonts.nix
@@ -12,7 +10,7 @@
       ./modules/system/stylix.nix
       ./modules/system/wayland.nix
       ./modules/system/bluetooth.nix
-      ./modules/user/stylix.nix
+# ./modules/user/stylix.nix
       ./modules/user/git.nix
       ./modules/user/power.nix
       ./modules/user/steam.nix
@@ -34,6 +32,25 @@
 
 # For google-chrome brave and many more
   nixpkgs.config.allowUnfree = true;
+
+# Blacklist problematic packages that cause dconf errors
+  nixpkgs.config.packageOverrides = pkgs: {
+# Blacklist gnome-text-editor and related problematic packages
+    gnome-text-editor = null;
+    gedit = null;
+    gnome = null;
+# Also blacklist any packages that might pull in gnome-text-editor
+    gnome-text-editor-unwrapped = null;
+    gnome-text-editor-unwrapped-dev = null;
+  };
+
+# Prevent problematic GNOME packages from being installed
+# Also disable any modules that might load gnome-text-editor
+  _module.args.stylixBlacklist = [
+    "gnome-text-editor"
+      "gedit"
+      "gnome"
+  ];
   hardware.enableRedistributableFirmware = true;
   services.udev.packages = with pkgs; [ libmtp ];
 
@@ -152,6 +169,8 @@
       home-manager
       wpa_supplicant
       dbus
+      brave
+      google-chrome
   ];
 
 # Leave it unchaged plz
