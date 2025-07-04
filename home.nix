@@ -1,9 +1,9 @@
-{ config, pkgs, userName, homeDirectory, ... }:
+{ config, pkgs, shared, homeDirectory, ... }:
 
 {
 
-  home.username = userName;
-  home.homeDirectory = homeDirectory;
+  home.username = shared.userName;
+  home.homeDirectory = "/home/${shared.userName}";
 
   xdg.configFile = {
     "hypr" = {
@@ -60,7 +60,7 @@
   home.file = {
 #   ".bashrc".source = ./dotfiles/bashrc;
 #   ".tmux.conf".source = ./dotfiles/tmux.conf;
-    "starship.toml".source = ./dotfiles/starship.toml
+    "starship.toml".source = ./dotfiles/starship.toml;
   };
 
   home.stateVersion = "25.05"; # Please read the comment before changing.

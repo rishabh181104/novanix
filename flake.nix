@@ -18,21 +18,22 @@
 # Centralized configuration - define once, use everywhere
     shared = {
       hostName = "novanix";     # Change to your hostname
-        username = "nova";          # Change to your username
+        userName = "nova";          # Change to your username
         system = "x86_64-linux";    # Change architecture if needed
         theme = "dracula";
 # wallpaper = (./themes + theme + /background.png);
     };
+    lib = nixpkgs.lib;
+    inputs = nixpkgs.inputs;
+    pkgs = nixpkgs.legacyPackages.${shared.system};
   in {
     nixosConfigurations.${shared.hostName} = nixpkgs.lib.nixosSystem {
       inherit (shared) system;
-      specialArgs = { inherit shared; };  # Make shared available in all modules
+      specialArgs = { inherit shared inputs; };  # Make shared available in all modules
 
         modules = [
-# Main system configuration (pass shared to it)
         ({ shared, ... }: { 
          networking.hostName = shared.hostName;
-# ... other config using shared ...
          })
 
 # Home Manager integration
@@ -41,13 +42,22 @@
         home-manager = {
           useGlobalPkgs = true;
           useUserPackages = true;
-          extraSpecialArgs = { inherit shared; };  # Pass to Home Manager
-            users.${shared.username} = {
+          extraSpecialArgs = { inherit shared inputs; };  # Pass to Home Manager
+            users.${shared.userName} = {
               imports = [ ./home.nix ];
 # Home Manager options here...
             };
         };
       }
+      ];
+      };
+      
+      # Standalone Home Manager configuration
+      homeConfigurations.${shared.userName} = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        extraSpecialArgs = { inherit shared; };
+        modules = [ ./home.nix ];
+      };
 
 # Stylix theming
 # stylix.nixosModules.stylix
@@ -58,7 +68,5 @@
 #       ... other Stylix config ...
 #   };
 # }
-      ];
-    };
   };
 }
