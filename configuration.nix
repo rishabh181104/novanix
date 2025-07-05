@@ -154,6 +154,9 @@
       spice
       spice-gtk
 
+## for configuring system
+      stow
+
 ##
 ## Packages for Hyprland
 ##
