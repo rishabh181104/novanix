@@ -121,6 +121,7 @@ alias h="history | grep "
 alias p="ps aux | grep "
 alias topcpu="/bin/ps -eo pcpu,pid,user,args | sort -k 1 -r | head -10"
 alias f="find . | grep "
+alias find="fzf --preview='bat {}'"
 alias checkcommand="type -t"
 alias openports='netstat -nape --inet'
 
