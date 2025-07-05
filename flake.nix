@@ -7,6 +7,10 @@
       url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-colors = {
+      url = "github:misterio77/nix-colors";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, stylix, ... } @ inputs:
@@ -22,7 +26,7 @@
   lib = nixpkgs.lib;
   pkgs = nixpkgs.legacyPackages.${shared.system};
   in {
-    nixosConfigurations.${shared.hostName} = lib.nixosSystem {
+    nixosConfigurations.${shared.hostName} = nixpkgs.lib.nixosSystem {
       inherit (shared) system;
       specialArgs = { inherit shared inputs; };
 
