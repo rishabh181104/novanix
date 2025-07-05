@@ -27,11 +27,10 @@
   // Left modules: Stream status, workspaces, network speed
   "modules-left": [
     "custom/stream_status",          // Custom stream status indicator
-    "battery#forest",                // Battery status
     "pulseaudio",                    // Audio controls
-    "memory",                        // Memory usage
     "disk",                          // Root disk usage
     "disk#home",                     // Home disk usage
+    "memory",                        // Memory usage
     // "cpu",                           // CPU usage
     // "custom/launcher",                // Application launcher (Rofi)
     "custom/netspeed"                // Network speed monitor
@@ -45,9 +44,8 @@
   // Right modules: System monitoring and controls
   "modules-right": [
     "tray",                           // System tray
-    "weekday",
-    "date",
-    "clock",                         // Date and time
+    "clock",                         // Weekday, date, time, and calendar
+    "battery#forest",                // Battery status
     "custom/lock"                    // Lock screen button
   ],
 
@@ -91,18 +89,11 @@
   // ==========================================
   //           CLOCK MODULE
   // ==========================================
-  // Date and time display
+  // Weekday, date, and time display with calendar tooltip
   "clock": {
-    "format": "{:%d %B %Y}",     // Display format
-    "tooltip": false
-  },
-  "date": {
-    "format": "{:%d %B %Y}",
-    "tooltip": false
-  },
-  "weekday": {
-    "format": "{:%A}", // Full weekday name (e.g., Wednesday)
-    "tooltip": false
+    "format": "{:%A, %d %B %Y | %H:%M}", // Weekday, date, time
+    "tooltip": true,
+    "tooltip-format": "<tt>{calendar}</tt>"
   },
 
   // ==========================================

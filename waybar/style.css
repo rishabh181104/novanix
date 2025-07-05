@@ -1,0 +1,146 @@
+/* Dark Theme Waybar CSS - minimal compatible version */
+
+* {
+  font-family: 'MesloLGS Nerd Font', 'JetBrains Mono', 'Fira Code', 'monospace';
+  font-size: 17px;
+  min-height: 0;
+}
+
+#waybar {
+  background: rgba(20, 22, 30, 0.95);
+  color: #f8f8f2;
+  margin: 6px 10px;
+  border-radius: 12px;
+  border: 1px solid #2d2e3a;
+}
+
+#workspaces {
+  background: rgba(35, 37, 45, 0.95);
+  border-radius: 8px;
+  margin: 0 1.5rem;
+  padding: 0 0.5rem;
+}
+
+#workspaces button {
+  color: #6272a4;
+  background: none;
+  border: none;
+  border-radius: 6px;
+  margin: 0.2rem 0.3rem;
+  padding: 0.4rem 0.8rem;
+}
+
+#workspaces button.active {
+  color: #8be9fd;
+  background: rgba(139, 233, 253, 0.10);
+  font-weight: bold;
+}
+
+#workspaces button.urgent {
+  color: #ff5555;
+  background: rgba(255, 85, 85, 0.10);
+}
+
+#workspaces button:hover {
+  color: #f8f8f2;
+  background: rgba(98, 114, 164, 0.15);
+}
+
+#custom-music, #tray, #backlight, #clock, #battery, #pulseaudio, #network, #cpu, #memory, #disk, #custom-netspeed, #custom-lock, #custom-power, #custom-stream_status, #custom-launcher, #weekday, #date {
+  background: rgba(35, 37, 45, 0.95);
+  margin: 0 0.4rem;
+  padding: 0.5rem 1.1rem;
+  border-radius: 8px;
+}
+
+#custom-stream_status.up { 
+  color: #50fa7b; 
+}
+
+#custom-stream_status.warning { 
+  color: #f1fa8c; 
+}
+
+#custom-stream_status.down { 
+  color: #ff5555; 
+}
+
+#clock, #date, #weekday {
+  color: #bd93f9;
+  font-weight: 500;
+}
+
+#battery { 
+  color: #50fa7b; 
+}
+
+#battery.charging { 
+  color: #50fa7b; 
+}
+
+#battery.warning { 
+  color: #ff5555; 
+}
+
+#backlight { 
+  color: #f1fa8c; 
+}
+
+#pulseaudio { 
+  color: #ff5555; 
+}
+
+#custom-music { 
+  color: #ff79c6; 
+}
+
+#custom-lock { 
+  color: #f8f8f2; 
+}
+
+#custom-power { 
+  color: #ff5555; 
+}
+
+#disk, #custom-netspeed, #network { 
+  color: #8be9fd; 
+}
+
+#cpu { 
+  color: #f1fa8c; 
+}
+
+#memory { 
+  color: #50fa7b; 
+}
+
+#custom-netspeed.disconnected { 
+  opacity: 0.5; 
+}
+
+#custom-launcher {
+  color: #f8f8f2;
+  padding-left: 0.7rem;
+  padding-right: 0.7rem;
+  font-size: 1.2em;
+  background: rgba(45, 47, 55, 0.95);
+  border-radius: 8px;
+  margin: 0 0.4rem;
+}
+
+#tray {
+  margin: 0 1.2rem;
+  border-radius: 8px;
+  background: rgba(35, 37, 45, 0.98);
+}
+
+#custom-music:hover, #tray:hover, #backlight:hover, #clock:hover, #battery:hover, #pulseaudio:hover, #network:hover, #cpu:hover, #memory:hover, #disk:hover, #custom-netspeed:hover, #custom-lock:hover, #custom-power:hover, #custom-stream_status:hover, #custom-launcher:hover, #weekday:hover, #date:hover {
+  background: rgba(98, 114, 164, 0.18);
+  color: #f8f8f2;
+}
+
+button {
+  background: none;
+  border: none;
+  outline: none;
+}
