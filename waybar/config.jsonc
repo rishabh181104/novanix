@@ -31,9 +31,8 @@
     "disk",                          // Root disk usage
     "disk#home",                     // Home disk usage
     "memory",                        // Memory usage
-    // "cpu",                           // CPU usage
+    "cpu"                           // CPU usage
     // "custom/launcher",                // Application launcher (Rofi)
-    "custom/netspeed"                // Network speed monitor
   ],
 
   // Center modules: Clock and system tray
@@ -43,6 +42,7 @@
 
   // Right modules: System monitoring and controls
   "modules-right": [
+    "custom/netspeed",               // Network speed monitor
     "tray",                           // System tray
     "clock",                         // Weekday, date, time, and calendar
     "battery#forest",                // Battery status
