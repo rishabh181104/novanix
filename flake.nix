@@ -7,10 +7,6 @@
       url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nix-colors = {
-      url = "github:misterio77/nix-colors";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs = { self, nixpkgs, stylix, ... } @ inputs:
