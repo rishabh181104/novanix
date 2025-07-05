@@ -21,7 +21,6 @@
   environment.systemPackages = with pkgs ; [
     python313Packages.qtile-extras
       xwallpaper
-      pcmanfm
       xfce.thunar
       vlc
       mupdf
