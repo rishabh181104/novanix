@@ -11,6 +11,7 @@
         brave
         google-chrome
         tree
+        yafetch
       ];
   };
   environment.shells = with pkgs; [ bash zsh fish ];
