@@ -1,8 +1,8 @@
 { lib, shared, pkgs, ... }:
 {
   stylix = {
-    image = shared.wallpaper;
-    base16Scheme = shared.schemeFile;
+    image = /home/${shared.userName}/novanix/themes/${shared.theme}/background.yaml;
+    base16Scheme = /home/${shared.userName}/novanix/themes/${shared.theme}/background.png;
     polarity = "dark";  # or "light"
       fonts = {
         monospace = {

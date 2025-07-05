@@ -17,8 +17,6 @@
       system = "x86_64-linux";
       theme = "dracula";
       timeZone = "Asia/Kolkata";
-      wallpaper = ./themes/${shared.theme}/background.png;
-      schemeFile = ./themes/${shared.theme}/background.yaml;
     };
   lib = nixpkgs.lib;
   pkgs = nixpkgs.legacyPackages.${shared.system};
