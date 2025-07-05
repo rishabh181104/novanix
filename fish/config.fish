@@ -16,15 +16,13 @@
 #           INTERACTIVE STARTUP
 # ==========================================
 # Run ASCII art and system info on startup
-# if status is-interactive
-#   # Run ASCII art generation script and then fastfetch
-#   if test -f ~/.config/fish/scripts/generate_ascii.sh
-#     fish ~/.config/fish/scripts/generate_ascii.sh && fastfetch
-#   else
-#     echo "Warning: generate_ascii.sh not found, running fastfetch without custom ASCII art"
-#     fastfetch
-#   end
-# end
+if status is-interactive
+  # Run ASCII art generation script and then fastfetch
+  if yafetch
+  else
+    echo "Warning: generate_ascii.sh not found, running fastfetch without custom ASCII art"
+  end
+end
 #
 # ==========================================
 #           SSH AGENT SETUP
