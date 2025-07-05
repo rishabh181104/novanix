@@ -19,8 +19,9 @@
 if status is-interactive
   # Run ASCII art generation script and then fastfetch
   if yafetch
+    yafetch
   else
-    echo "Warning: generate_ascii.sh not found, running fastfetch without custom ASCII art"
+    echo "yafetch not installed"
   end
 end
 #
