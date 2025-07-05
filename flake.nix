@@ -30,14 +30,8 @@
       modules = [
         ./configuration.nix
           ./hardware.nix
+          ./modules/stylix.nix
           stylix.nixosModules.stylix
-          {
-            stylix = {
-              image = shared.wallpaper;
-              base16Scheme = shared.schemeFile;
-              polarity = "dark";
-            };
-          }
       ];
     };
   };

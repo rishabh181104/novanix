@@ -5,9 +5,9 @@
 --ignore=configuration.nix
 --ignore=hardware.nix
 --ignore=themes/
+--ignore=modules/
 --ignore=DS_Store
---ignore=atuin/*
-                 --ignore=README
-                 --ignore=LICENSE
-                 --ignore=.git
-                 --ignore=.gitignore
+--ignore=README
+--ignore=LICENSE
+--ignore=.git
+--ignore=.gitignore
