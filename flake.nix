@@ -11,7 +11,7 @@
 
   outputs = { self, nixpkgs, stylix, ... } @ inputs:
     let
-    refrence {
+    refrence = {
       hostName = "novanix";
       userName = "nova";
       system = "x86_64-linux";
