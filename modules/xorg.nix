@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  xserver = {
+  services.xserver = {
     enable = true;
     videoDrivers = [ "nvidia" ];
     windowManager.qtile.enable = true;
