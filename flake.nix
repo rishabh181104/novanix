@@ -20,7 +20,13 @@
       locale = "en_US.UTF-8";
     };
   lib = nixpkgs.lib;
-  pkgs = nixpkgs.legacyPackages.${shared.system};
+  pkgs = import nixpkgs {
+    inherit (shared) system;
+
+    config = {
+      allowUnfree = true;
+    };
+  };
   in {
     nixosConfigurations.${shared.hostName} = nixpkgs.lib.nixosSystem {
       inherit (shared) system;
@@ -28,9 +34,6 @@
 
       modules = [
         ./configuration.nix
-          ./hardware.nix
-          ./modules/stylix.nix
-          stylix.nixosModules.stylix
       ];
     };
   };
