@@ -1,21 +1,21 @@
-{ config, pkgs, refrence, ... }:
+{ config, pkgs, sargs, ... }:
 
 {
   i18n = {
-    defaultLocale = refrence.locale;
+    defaultLocale = sargs.locale;
     extraLocaleSettings = {
-      LC_ADDRESS = refrence.locale;
-      LC_IDENTIFICATION = refrence.locale;
-      LC_MEASUREMENT = refrence.locale;
-      LC_MONETARY = refrence.locale;
-      LC_NAME = refrence.locale;
-      LC_NUMERIC = refrence.locale;
-      LC_PAPER = refrence.locale;
-      LC_TELEPHONE = refrence.locale;
-      LC_TIME = refrence.locale;
+      LC_ADDRESS = sargs.locale;
+      LC_IDENTIFICATION = sargs.locale;
+      LC_MEASUREMENT = sargs.locale;
+      LC_MONETARY = sargs.locale;
+      LC_NAME = sargs.locale;
+      LC_NUMERIC = sargs.locale;
+      LC_PAPER = sargs.locale;
+      LC_TELEPHONE = sargs.locale;
+      LC_TIME = sargs.locale;
     };
   };
-  networking.hostName = refrence.hostName;
+  networking.hostName = sargs.hostName;
   networking.networkmanager.enable = true;
   programs.nm-applet.enable = true;
   environment.systemPackages = with pkgs ; [

@@ -11,7 +11,7 @@
 
   outputs = { self, nixpkgs, stylix, ... } @ inputs:
     let
-    refrence = {
+    sargs = {
       hostName = "novanix";
       userName = "nova";
       system = "x86_64-linux";
@@ -21,16 +21,16 @@
     };
   lib = nixpkgs.lib;
   pkgs = import nixpkgs {
-    inherit (refrence) system;
+    inherit (sargs) system;
 
     config = {
       allowUnfree = true;
     };
   };
   in {
-    nixosConfigurations.${refrence.hostName} = nixpkgs.lib.nixosSystem {
-      inherit (refrence) system;
-      specialArgs = { inherit (refrence) inputs; };
+    nixosConfigurations.${sargs.hostName} = nixpkgs.lib.nixosSystem {
+      inherit (sargs) system;
+      specialsargs = { inherit (sargs) inputs; };
 
       modules = [
         ./configuration.nix
