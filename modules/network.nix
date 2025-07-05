@@ -15,7 +15,7 @@
       LC_TIME = userSettings.locale;
     };
   };
-  networking.hostName = systemSettings.hostName;
+  networking.hostName = systemSettings.hostname;
   networking.networkmanager.enable = true;
   programs.nm-applet.enable = true;
   environment.systemPackages = with pkgs ; [
