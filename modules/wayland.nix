@@ -34,6 +34,6 @@
       qt6.qtmultimedia
       imagemagick
       nwg-look
-      rofi-wayland
+      fuzzel
       ];
 }
