@@ -11,38 +11,34 @@
 
   outputs = { self, nixpkgs, stylix, ... } @ inputs:
     let
-# Centralized configuration - define once, use everywhere
     shared = {
-      hostName = "novanix";     # Change to your hostname
-        userName = "nova";          # Change to your username
-        system = "x86_64-linux";    # Change architecture if needed
-        theme = "dracula";
+      hostName = "novanix";
+      userName = "nova";
+      system = "x86_64-linux";
+      theme = "dracula";
       timeZone = "Asia/Kolkata";
       wallpaper = ./themes/${shared.theme}/background.png;
+      schemeFile = ./themes/${shared.theme}/background.yaml;
     };
   lib = nixpkgs.lib;
   pkgs = nixpkgs.legacyPackages.${shared.system};
   in {
     nixosConfigurations.${shared.hostName} = lib.nixosSystem {
       inherit (shared) system;
-      specialArgs = { inherit shared inputs; };  # Make shared available in all modules
+      specialArgs = { inherit shared inputs; };
 
-        modules = [
-        ({ shared, ... }: { 
-         networking.hostName = shared.hostName;
-         })
-
-# Import your configuration files
-      ./configuration.nix
-        ./hardware.nix
-
-# Stylix theming (uncomment when ready)
-        stylix.nixosModules.stylix
-        {
-          stylix.image = shared.wallpaper;
-          stylix.base16Scheme = "${pkgs.base16-schemes}/home/${shared.userName}/novanix/themes/${shared.theme}/background.yaml";
-        }
-        ];
+      modules = [
+        ./configuration.nix
+          ./hardware.nix
+          stylix.nixosModules.stylix
+          {
+            stylix = {
+              image = shared.wallpaper;
+              base16Scheme = shared.schemeFile;
+              polarity = "dark";
+            };
+          }
+      ];
     };
   };
 }
