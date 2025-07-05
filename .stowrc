@@ -1,0 +1,12 @@
+--target=~/.config
+--ignore=.stowrc
+--ignore=flake.nix
+--ignore=flake.lock
+--ignore=configuration.nix
+--ignore=hardware.nix
+--ignore=DS_Store
+--ignore=atuin/*
+--ignore=README
+--ignore=LICENSE
+--ignore=.git
+--ignore=.gitignore
