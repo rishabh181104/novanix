@@ -11,7 +11,7 @@
 
   outputs = { self, nixpkgs, stylix, ... } @ inputs:
     let
-    spec = {
+    shared = {
       hostName = "novanix";
       userName = "nova";
       system = "x86_64-linux";
@@ -21,16 +21,16 @@
     };
   lib = nixpkgs.lib;
   pkgs = import nixpkgs {
-    inherit (spec) system;
+    inherit (shared) system;
 
     config = {
       allowUnfree = true;
     };
   };
   in {
-    nixosConfigurations.${spec.hostName} = nixpkgs.lib.nixosSystem {
-      inherit (spec) system;
-      specialspec = { inherit (spec) inputs; };
+    nixosConfigurations.${shared.hostName} = nixpkgs.lib.nixosSystem {
+      inherit (shared) system;
+      sharedialspec = { inherit (shared) inputs; };
 
       modules = [
         ./configuration.nix
