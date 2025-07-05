@@ -289,7 +289,7 @@
       wl-clipboard
       xclip
       gnome-keyring
-      fastfetch
+      yafetch
       lazygit
       git
       psmisc
