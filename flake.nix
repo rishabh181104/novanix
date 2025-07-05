@@ -34,6 +34,7 @@
 
       modules = [
         ./configuration.nix
+          stylix.nixosModules.stylix
       ];
     };
   };
