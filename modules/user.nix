@@ -1,8 +1,8 @@
-{ config, pkgs, shared, ... }:
+{ config, pkgs, refrence, ... }:
 
 {
-  time.timeZone = shared.timeZone;
-  users.users.${shared.userName} = {
+  time.timeZone = refrence.timeZone;
+  users.users.${refrence.userName} = {
     isNormalUser = true;
     shell = pkgs.fish;
     extraGroups = [ "wheel" "networkmanager" "libvirtd" "kvm" ]; # Enable ‘sudo’ for the user.

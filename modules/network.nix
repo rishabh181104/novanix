@@ -1,21 +1,21 @@
-{ config, pkgs, shared, ... }:
+{ config, pkgs, refrence, ... }:
 
 {
   i18n = {
-    defaultLocale = shared.locale;
+    defaultLocale = refrence.locale;
     extraLocaleSettings = {
-      LC_ADDRESS = shared.locale;
-      LC_IDENTIFICATION = shared.locale;
-      LC_MEASUREMENT = shared.locale;
-      LC_MONETARY = shared.locale;
-      LC_NAME = shared.locale;
-      LC_NUMERIC = shared.locale;
-      LC_PAPER = shared.locale;
-      LC_TELEPHONE = shared.locale;
-      LC_TIME = shared.locale;
+      LC_ADDRESS = refrence.locale;
+      LC_IDENTIFICATION = refrence.locale;
+      LC_MEASUREMENT = refrence.locale;
+      LC_MONETARY = refrence.locale;
+      LC_NAME = refrence.locale;
+      LC_NUMERIC = refrence.locale;
+      LC_PAPER = refrence.locale;
+      LC_TELEPHONE = refrence.locale;
+      LC_TIME = refrence.locale;
     };
   };
-  networking.hostName = shared.hostName;
+  networking.hostName = refrence.hostName;
   networking.networkmanager.enable = true;
   programs.nm-applet.enable = true;
   environment.systemPackages = with pkgs ; [
