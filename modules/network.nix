@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, shared, ... }:
 
 {
   i18n = {
@@ -15,4 +15,11 @@
       LC_TIME = ${shared.locale};
     };
   };
+  networking.hostName = shared.hostName;
+  networking.networkmanager.enable = true;
+  programs.nm-applet.enable = true;
+  environment.systemPackages = with pkgs ; [
+    networkmanager
+      networkmanagerapplet
+  ];
 }
