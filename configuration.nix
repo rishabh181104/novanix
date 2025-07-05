@@ -10,6 +10,7 @@
 {
   imports = [
     ./hardware.nix
+      ./modules/stylix.nix
   ];
 
   networking.hostName = shared.hostName;
