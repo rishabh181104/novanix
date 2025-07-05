@@ -59,8 +59,7 @@ set -gx STARSHIP_CONFIG ~/.config/starship.toml
 
 # SSH and locale settings
 set -gx SSH_AUTH_SOCK $XDG_RUNTIME_DIR/ssh-agent.socket
-set -gx LANG en_IN.UTF-8
-set -gx LC_ALL en_IN.UTF-8
+set -gx LANG "en_IN.UTF-8"
 
 # PATH configuration
 set -gx PATH $HOME/.local/bin $PATH
