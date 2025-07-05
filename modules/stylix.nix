@@ -3,8 +3,8 @@
   stylix = {
 # image = /home/${shared.userName}/novanix/themes/${shared.theme}/background.yaml;
 # base16Scheme = /home/${shared.userName}/novanix/themes/${shared.theme}/background.png;
-    image = /home/nova/novanix/themes/uwunicorn/background.png;
-    base16Scheme = /home/nova/novanix/themes/uwunicorn/background.yaml;
+    image = ./../themes/${shared.theme}/background.png;
+    base16Scheme = ./../themes/${shared.theme}/background.yaml;
     fonts = {
 # monospace = {
 #   package = pkgs.nerdfonts.override { fonts = [ "Meslo" ]; };
