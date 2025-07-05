@@ -1,10 +1,10 @@
-{ lib, sargs, pkgs, stylix, ... }:
+{ lib, smsm, pkgs, stylix, ... }:
 {
   stylix = {
-# image = /home/${sargs.userName}/novanix/themes/${sargs.theme}/background.yaml;
-# base16Scheme = /home/${sargs.userName}/novanix/themes/${sargs.theme}/background.png;
-    image = ./../themes/${sargs.theme}/background.png;
-    base16Scheme = ./../themes/${sargs.theme}/background.yaml;
+# image = /home/${smsm.userName}/novanix/themes/${smsm.theme}/background.yaml;
+# base16Scheme = /home/${smsm.userName}/novanix/themes/${smsm.theme}/background.png;
+    image = ./../themes/${smsm.theme}/background.png;
+    base16Scheme = ./../themes/${smsm.theme}/background.yaml;
     fonts = {
 # monospace = {
 #   package = pkgs.nerdfonts.override { fonts = [ "Meslo" ]; };

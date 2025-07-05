@@ -11,7 +11,7 @@
 
   outputs = { self, nixpkgs, stylix, ... } @ inputs:
     let
-    sargs = {
+    smsm = {
       hostName = "novanix";
       userName = "nova";
       system = "x86_64-linux";
@@ -21,16 +21,16 @@
     };
   lib = nixpkgs.lib;
   pkgs = import nixpkgs {
-    inherit (sargs) system;
+    inherit (smsm) system;
 
     config = {
       allowUnfree = true;
     };
   };
   in {
-    nixosConfigurations.${sargs.hostName} = nixpkgs.lib.nixosSystem {
-      inherit (sargs) system;
-      specialsargs = { inherit (sargs) inputs; };
+    nixosConfigurations.${smsm.hostName} = nixpkgs.lib.nixosSystem {
+      inherit (smsm) system;
+      specialsmsm = { inherit (smsm) inputs; };
 
       modules = [
         ./configuration.nix
