@@ -11,7 +11,7 @@
 
   outputs = { self, nixpkgs, stylix, ... } @ inputs:
     let
-    smsm = {
+    env = {
       hostName = "novanix";
       userName = "nova";
       system = "x86_64-linux";
@@ -21,16 +21,16 @@
     };
   lib = nixpkgs.lib;
   pkgs = import nixpkgs {
-    inherit (smsm) system;
+    inherit (env) system;
 
     config = {
       allowUnfree = true;
     };
   };
   in {
-    nixosConfigurations.${smsm.hostName} = nixpkgs.lib.nixosSystem {
-      inherit (smsm) system;
-      specialsmsm = { inherit (smsm) inputs; };
+    nixosConfigurations.${env.hostName} = nixpkgs.lib.nixosSystem {
+      inherit (env) system;
+      specialenv = { inherit (env) inputs; };
 
       modules = [
         ./configuration.nix
