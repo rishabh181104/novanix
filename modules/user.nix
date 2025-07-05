@@ -1,8 +1,8 @@
-{ config, pkgs, env, ... }:
+{ config, pkgs, spec, ... }:
 
 {
-  time.timeZone = env.timeZone;
-  users.users.${env.userName} = {
+  time.timeZone = spec.timeZone;
+  users.users.${spec.userName} = {
     isNormalUser = true;
     shell = pkgs.fish;
     extraGroups = [ "wheel" "networkmanager" "libvirtd" "kvm" ]; # Enable ‘sudo’ for the user.

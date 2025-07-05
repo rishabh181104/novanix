@@ -1,21 +1,21 @@
-{ config, pkgs, env, ... }:
+{ config, pkgs, spec, ... }:
 
 {
   i18n = {
-    defaultLocale = env.locale;
+    defaultLocale = spec.locale;
     extraLocaleSettings = {
-      LC_ADDRESS = env.locale;
-      LC_IDENTIFICATION = env.locale;
-      LC_MEASUREMENT = env.locale;
-      LC_MONETARY = env.locale;
-      LC_NAME = env.locale;
-      LC_NUMERIC = env.locale;
-      LC_PAPER = env.locale;
-      LC_TELEPHONE = env.locale;
-      LC_TIME = env.locale;
+      LC_ADDRESS = spec.locale;
+      LC_IDENTIFICATION = spec.locale;
+      LC_MEASUREMENT = spec.locale;
+      LC_MONETARY = spec.locale;
+      LC_NAME = spec.locale;
+      LC_NUMERIC = spec.locale;
+      LC_PAPER = spec.locale;
+      LC_TELEPHONE = spec.locale;
+      LC_TIME = spec.locale;
     };
   };
-  networking.hostName = env.hostName;
+  networking.hostName = spec.hostName;
   networking.networkmanager.enable = true;
   programs.nm-applet.enable = true;
   environment.systemPackages = with pkgs ; [
