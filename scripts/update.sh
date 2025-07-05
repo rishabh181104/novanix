@@ -5,7 +5,3 @@ sudo nix flake update
 
 echo "Updating System"
 sudo nixos-rebuild switch --flake .#novanix
-
-echo "Updating Home-manager"
-# nix-shell '<home-manager>' -A install
-home-manager --switch --flake .nova

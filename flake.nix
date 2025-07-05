@@ -3,17 +3,13 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     stylix = {
       url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, stylix, ... } @ inputs:
+  outputs = { self, nixpkgs, stylix, ... } @ inputs:
     let
 # Centralized configuration - define once, use everywhere
     shared = {
@@ -40,28 +36,13 @@
       ./configuration.nix
         ./hardware.nix
 
-# Home Manager integration
-        home-manager.nixosModules.home-manager
-        {
-          home-manager = {
-            useGlobalPkgs = true;
-            useUserPackages = true;
-            extraSpecialArgs = { inherit shared inputs; };
-            users.${shared.userName} = {
-              imports = [ 
-                ./home.nix
-              ];
-            };
-          };
-        }
-
 # Stylix theming (uncomment when ready)
 # stylix.nixosModules.stylix
 # {
 #   stylix.image = shared.wallpaper;
 #   stylix.base16Scheme = ...;
 # }
-      ];
+        ];
     };
   };
 }
