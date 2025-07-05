@@ -19,7 +19,6 @@
 if status is-interactive
   # Run ASCII art generation script and then fastfetch
   if yafetch
-    yafetch
   else
     echo "yafetch not installed"
   end

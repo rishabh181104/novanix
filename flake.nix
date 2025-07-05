@@ -17,6 +17,7 @@
       system = "x86_64-linux";
       theme = "dracula";
       timeZone = "Asia/Kolkata";
+      locale = "en_US.UTF-8";
     };
   lib = nixpkgs.lib;
   pkgs = nixpkgs.legacyPackages.${shared.system};

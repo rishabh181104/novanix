@@ -1,12 +1,5 @@
-# Edit this configuration file to define what should be installed on
-# your system. Help is available in the configuration.nix(5) man page, on
-# https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
-
 { config, lib, pkgs, inputs, shared, ... }:
-# let
-# sources = import ./nix/sources.nix;
-# lanzaboote = import sources.lanzaboote;
-# in
+
 {
   imports = [
     ./hardware.nix
@@ -16,11 +9,7 @@
   networking.hostName = shared.hostName;
   networking.networkmanager.enable = true;
   programs.nm-applet.enable = true;
-# networking.wireless.enable = true;
-
-# Set your time zone.
   time.timeZone = shared.timeZone;
-# Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.${shared.userName} = {
     isNormalUser = true;
     shell = pkgs.fish;
@@ -106,8 +95,7 @@
 
 # Explicitly enable or disable open-source kernel modules
   hardware.nvidia = {
-# open = true; # Use open-source kernel modules (recommended for RTX/GTX 16xx GPUs)
-    open = false; # Use proprietary kernel modules (uncomment if needed for older GPUs)
+    open = false;
   };
 
   services.displayManager.sddm = {
@@ -117,36 +105,20 @@
 
   services.picom.enable = true;
 
-# Configure keymap in X11
-# services.xserver.xkb.layout = "us";
-# services.xserver.xkb.options = "eurosign:e,caps:escape";
-
-# Enable CUPS to print documents.
-# services.printing.enable = true;
-
-# Enable sound.
-# services.pulseaudio.enable = true;
-# OR
   services.pipewire = {
     enable = true;
     pulse.enable = true;
   };
 
-# Enable touchpad support (enabled default in most desktopManager).
   services.libinput.enable = true;
 
-# Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
   programs.firefox.enable = true;
 
-# List packages installed in system profile.
-# You can use https://search.nixos.org/ to find more packages (and options).
   programs.ssh.startAgent = true;
   environment.systemPackages = with pkgs; [
-##
 ## Packages for VM
-##
     qemu
       libvirt
       virt-manager
@@ -154,13 +126,9 @@
       bridge-utils
       spice
       spice-gtk
-
 ## for configuring system
       stow
-
-##
 ## Packages for Hyprland
-##
       hyprland
       hypridle
       hyprland-qt-support
@@ -189,22 +157,13 @@
       qt6.qtmultimedia
       imagemagick
       nwg-look
-
-##
 ## Packages for spotify
-##
       spotify
       spotify-tray
-
-##
 ## Packages for Browsers
-##
       google-chrome
       brave
-
-##
 ## Packages for Kernel and Signing Kernel
-##
       sbctl
       niv
       mokutil
@@ -213,10 +172,7 @@
       mkinitcpio-nfs-utils
       linuxKernel.kernels.linux_zen
       efibootmgr
-
-##
 ## Packages for daily-use as in office use
-##
       stirling-pdf
       thunderbird
       libreoffice-fresh
@@ -228,43 +184,26 @@
       usbutils
       libmtp
       htop
-
-##
 ## Social Media or Chatting apps
-##
       whatsie
       discord
-
-##
 ## Packages for Bluetooth
-##
       blueman
       bluez
       bluez-tools
-
-##
 ## Packages for Shell
-##
       fish
       starship
       bash
       zsh
-
-##
 ## Packages for Nework
-##
       networkmanager
       networkmanagerapplet
-
-##
 ## Packages for Screenshot
-##
       grim
       grimblast
       slurp
-##
 ## Packages for Editors
-##
       code-cursor
       zed-editor
       vim 
@@ -274,10 +213,7 @@
       gnumake
       unzip
       shellcheck
-
-##
 ## Packages for Terminals and some daily use terminal based packages
-##
       alacritty
       foot
       kitty
@@ -294,10 +230,7 @@
       lazygit
       git
       psmisc
-
-##
 ## Packages for Xorg/qtile
-##
       python313Packages.qtile-extras
       xwallpaper
       pcmanfm
@@ -305,10 +238,7 @@
       vlc
       mupdf
       rofi-wayland
-
-##
 ## Packages like programming languages and packages for development
-##
       python3Full
       nodejs_24
       go
@@ -336,10 +266,7 @@
       rustc
       rust-analyzer
       rustfmt
-
-##
 ## Packages for Nvidia
-##
       vulkan-loader
       vulkan-tools
       ];
@@ -350,24 +277,6 @@
       nerd-fonts.dejavu-sans-mono
   ];
 
-# Some programs need SUID wrappers, can be configured further or are
-# started in user sessions.
-# programs.mtr.enable = true;
-# programs.gnupg.agent = {
-#   enable = true;
-#   enableSSHSupport = true;
-# };
-
-# List services that you want to enable:
-
-
-# Open ports in the firewall.
-# networking.firewall.allowedTCPPorts = [ ... ];
-# networking.firewall.allowedUDPPorts = [ ... ];
-# Or disable the firewall altogether.
-# networking.firewall.enable = false;
-
-# For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
   system.stateVersion = "25.05"; # Did you read the comment?
 
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
