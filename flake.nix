@@ -18,7 +18,7 @@
         system = "x86_64-linux";    # Change architecture if needed
         theme = "dracula";
       timeZone = "Asia/Kolkata";
-# wallpaper = ./themes/${theme}/background.png;
+      wallpaper = ./themes/${shared.theme}/background.png;
     };
   lib = nixpkgs.lib;
   pkgs = nixpkgs.legacyPackages.${shared.system};
@@ -37,11 +37,11 @@
         ./hardware.nix
 
 # Stylix theming (uncomment when ready)
-# stylix.nixosModules.stylix
-# {
-#   stylix.image = shared.wallpaper;
-#   stylix.base16Scheme = ...;
-# }
+        stylix.nixosModules.stylix
+        {
+          stylix.image = shared.wallpaper;
+          stylix.base16Scheme = "${pkgs.base16-schemes}/home/${shared.userName}/novanix/themes/${shared.theme}/background.yaml";
+        }
         ];
     };
   };
