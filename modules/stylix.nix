@@ -1,10 +1,10 @@
-{ lib, shared, pkgs, stylix, ... }:
+{ lib, pkgs, stylix, userSettings, systemSettings, ... }:
 {
   stylix = {
-# image = /home/${shared.userName}/novanix/themes/${shared.theme}/background.yaml;
-# base16Scheme = /home/${shared.userName}/novanix/themes/${shared.theme}/background.png;
-    image = ./../themes/${shared.theme}/background.png;
-    base16Scheme = ./../themes/${shared.theme}/background.yaml;
+# image = /home/${userSettings.userName}/novanix/themes/${userSettings.theme}/background.yaml;
+# base16Scheme = /home/${userSettings.userName}/novanix/themes/${userSettings.theme}/background.png;
+    image = ./../themes/${userSettings.theme}/background.png;
+    base16Scheme = ./../themes/${userSettings.theme}/background.yaml;
     fonts = {
 # monospace = {
 #   package = pkgs.nerdfonts.override { fonts = [ "Meslo" ]; };
