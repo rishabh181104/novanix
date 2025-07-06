@@ -20,7 +20,7 @@
     name = "rishabh181104";
     email = "rishabhhaldiya18@gmail.com";
     dotfilesDir = "~/novanix";
-    theme = "dracula";
+    theme = "gruvbox-dark-hard";
     wm = "hyprland";
     wmType = if ((wm == "hyprland") || (wm == "plasma")) then "wayland" else "x11";
     browser = "brave";
