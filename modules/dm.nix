@@ -1,8 +1,14 @@
 { config, pkgs, ... }:
 {
-  services.displayManager.sddm = {
-    enable = true;
-    wayland.enable = true;
-  };
+
+  services = {
+    # Ensure proper display manager
+    displayManager = {
+      defaultSession = "hyprland";
+      autoLogin = {
+        enable = true;
+        user = userSettings.username;
+      };
+    };
 }
 

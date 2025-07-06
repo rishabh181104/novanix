@@ -24,7 +24,9 @@
     wm = "hyprland";
     browser = "brave";
     term = "alacritty";
-    editor = "neovide";
+    editor = "zeditor";
+    timezone = "Asia/Kolkata";
+    locale = "en_US.UTF-8";
   };
 
   lib = nixpkgs.lib;
@@ -40,7 +42,7 @@
               useUserPackages = true;
               useGlobalPkgs = true;
               extraSpecialArgs = {
-                inherit userSettings systemSettings;
+                inherit userSettings systemSettings inputs;
               };
               users.${userSettings.username} = import ./modules/home.nix;
             };

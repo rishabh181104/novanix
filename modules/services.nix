@@ -32,6 +32,9 @@
     
     # Bluetooth (if you have bluetooth hardware)
     blueman.enable = true;
+    
+    # Network manager
+    networkmanager.enable = true;
   };
   
   # Security and authentication

@@ -10,8 +10,8 @@
 
   imports = [
     ./hardware.nix
+      ./modules/system.nix
       ./modules/packages.nix
-      ./modules/theming.nix
       ./modules/network.nix
       ./modules/dm.nix
       ./modules/dev.nix
