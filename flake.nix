@@ -34,7 +34,7 @@
         system = systemSettings.system;
         modules = [
           ./configuration.nix
-            inputs.stylix.nixosModules.stylix
+            stylix.nixosModules.stylix
             home-manager.nixosModules.home-manager
             {
               home-manager = {

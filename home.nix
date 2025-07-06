@@ -1,8 +1,8 @@
-{ config, pkgs, userSettings, systemSettings, ... }:
+{ pkgs, userSettings, systemSettings, ... }:
 
 {
   home.username = userSettings.username;
-  home.homeDirectory = "/home/${userSettings.username}";
+  home.homeDirectory = systemSettings.hostname;
   home.stateVersion = "25.05";
 
   home.packages = with pkgs ; [
