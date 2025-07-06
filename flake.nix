@@ -1,7 +1,7 @@
 {
   description = "My NixOS Flake";
 
-  outputs = { self, nixpkgs, stylix, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, stylix, ... }@inputs:
     let 
 # ---- SYSTEM SETTINGS ---- #
     systemSettings = {
@@ -34,6 +34,14 @@
         modules = [
           ./configuration.nix
             inputs.stylix.nixosModules.stylix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useUserPackages = true;
+                useGlobalPkgs = true;
+                users.${userSettings.username} = import .modules/home.nix;
+              };
+            }
         ];
         specialArgs = {
           userSettings = userSettings;
@@ -42,10 +50,6 @@
         };
       };
     };
-# homeConfigurations.${systemSettings.hostname} = home-manager.lib.homeManagerConfiguration {
-#   inherit pkgs;
-#   modules = [ ./modules/home.nix ];
-# };
   };
 
   inputs = {
