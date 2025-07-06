@@ -39,7 +39,7 @@
               home-manager = {
                 useUserPackages = true;
                 useGlobalPkgs = true;
-                users.${userSettings.username} = import .modules/home.nix;
+                users.${userSettings.username} = import ./home.nix;
               };
             }
         ];
