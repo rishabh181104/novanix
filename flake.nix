@@ -31,25 +31,30 @@
 
   lib = nixpkgs.lib;
   in {
-    nixosConfigurations.${systemSettings.hostname} = lib.nixosSystem {
-      inherit (systemSettings) system;
-      modules = [
-        ./configuration.nix
-          inputs.stylix.nixosModules.stylix
-          home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              useUserPackages = true;
-              useGlobalPkgs = true;
-              extraSpecialArgs = {
-                inherit userSettings systemSettings inputs;
-              };
-              users.${userSettings.username} = import ./modules/home.nix;
-            };
-          }
-      ];
-      specialArgs = {
-        inherit inputs userSettings systemSettings;
+    homeConfigurations = {
+      user = home-manager.lib.homeManagerConfiguration {
+        modules = [
+          ./modules/home.nix
+        ];
+        extraSpecialArgs = {
+          inherit systemSettings;
+          inherit userSettings;
+          inherit inputs;
+        };
+      };
+    };
+    nixosConfigurations = {
+      ${systemSettings.hostname} = lib.nixosSystem {
+        system = systemSettings.system;
+        modules = [
+          ./configuration.nix
+            inputs.stylix.nixosModules.stylix
+        ];
+        specialArgs = {
+          inherit userSettings;
+          inherit systemSettings;
+          inherit inputs;
+        };
       };
     };
   };
