@@ -1,14 +1,5 @@
-{ config , pkgs, ... }:
+{ config, pkgs, ... }:
 {
-  environment.systemPackages = with pkgs ; [
-    code-cursor
-      zed-editor
-      vim 
-      neovim
-      wget
-      fzf
-      gnumake
-      unzip
-      shellcheck
-  ];
+  # Packages are now centralized in flake.nix
+  # This module can be used for editor-specific configurations if needed
 }

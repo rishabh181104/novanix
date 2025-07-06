@@ -1,9 +1,6 @@
 { config, pkgs, ... }:
 
 {
-  environment.systemPackages = with pkgs ; [ 
-    blueman
-    bluez
-    bluez-tools
-  ];
+  # Packages are now centralized in flake.nix
+  # This module can be used for bluetooth-specific configurations if needed
 }

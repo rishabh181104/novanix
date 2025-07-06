@@ -33,7 +33,7 @@
         system = systemSettings.system;
         modules = [
           ./configuration.nix
-            stylix.nixosModules.stylix
+          stylix.nixosModules.stylix
         ];
         specialArgs = {
           userSettings = userSettings;

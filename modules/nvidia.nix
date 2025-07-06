@@ -26,14 +26,6 @@
   hardware.graphics.enable = true;
   hardware.graphics.enable32Bit = true;
   
-  # System packages for NVIDIA
-  environment.systemPackages = with pkgs; [
-    # Vulkan support
-    vulkan-loader
-    vulkan-tools
-    vulkan-validation-layers
-  ];
-  
   # Boot configuration for NVIDIA
   boot.kernelParams = [
     "nvidia-drm.modeset=1"

@@ -10,14 +10,6 @@
       };
     };
   };
-  environment.systemPackages = with pkgs; [
-    qemu
-      libvirt
-      virt-manager
-      virt-viewer
-      bridge-utils
-      spice
-      spice-gtk
-  ];
+  # Packages are now centralized in flake.nix
 }
 

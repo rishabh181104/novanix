@@ -10,6 +10,7 @@
 
   imports = [
     ./hardware.nix
+    ./modules/packages.nix
     ./modules/stylix.nix
     ./modules/network.nix
     ./modules/dm.nix
@@ -29,6 +30,7 @@
     ./modules/virtual-machine.nix
     ./modules/extra-packages.nix
     ./modules/bluetooth.nix
+    ./modules/git.nix
   ];
 
   system.stateVersion = "25.05"; # Did you read the comment?

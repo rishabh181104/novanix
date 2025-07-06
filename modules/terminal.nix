@@ -1,22 +1,6 @@
 { config, pkgs, ... }:
 
 {
-  environment.systemPackages = with pkgs ; [
-    alacritty
-      foot
-      kitty
-      btop
-      bat
-      bc
-      brightnessctl
-      ripgrep
-      keychain
-      wl-clipboard
-      xclip
-      gnome-keyring
-      yafetch
-      lazygit
-      git
-      psmisc
-  ];
+  # Packages are now centralized in flake.nix
+  # This module can be used for terminal-specific configurations if needed
 }
