@@ -1,8 +1,8 @@
-{ config, pkgs, ... }:
+{ config, pkgs, userSettings, ... }:
 {
 
   services = {
-    # Ensure proper display manager
+# Ensure proper display manager
     displayManager = {
       defaultSession = "hyprland";
       autoLogin = {
@@ -10,5 +10,6 @@
         user = userSettings.username;
       };
     };
+  };
 }
 

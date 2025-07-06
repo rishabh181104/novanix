@@ -2,48 +2,45 @@
 
 {
   services = {
-    # Display and compositor
+# Display and compositor
     picom.enable = true;
-    
-    # Input handling
+
+# Input handling
     libinput.enable = true;
-    
-    # Network services
+
+# Network services
     openssh.enable = true;
-    
-    # Hardware and device management
+
+# Hardware and device management
     udev.packages = with pkgs; [ libmtp ];
     udisks2.enable = true;
-    
-    # Audio system
+
+# Audio system
     pipewire = {
       enable = true;
       pulse.enable = true;
       alsa.enable = true;
       jack.enable = true;
     };
-    
-    # Printing (optional - uncomment if needed)
-    # printing.enable = true;
-    # avahi = {
-    #   enable = true;
-    #   nssmdns4 = true;
-    # };
-    
-    # Bluetooth (if you have bluetooth hardware)
+
+# Printing (optional - uncomment if needed)
+# printing.enable = true;
+# avahi = {
+#   enable = true;
+#   nssmdns4 = true;
+# };
+
+# Bluetooth (if you have bluetooth hardware)
     blueman.enable = true;
-    
-    # Network manager
-    networkmanager.enable = true;
   };
-  
-  # Security and authentication
+
+# Security and authentication
   security.polkit.enable = true;
   programs.ssh.startAgent = true;
-  
-  # System optimization
+
+# System optimization
   powerManagement.cpuFreqGovernor = "performance";
-  
-  # Disable pulseaudio in favor of pipewire
+
+# Disable pulseaudio in favor of pipewire
   services.pulseaudio.enable = false;
 }
