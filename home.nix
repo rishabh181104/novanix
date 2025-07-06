@@ -5,7 +5,7 @@
   home.homeDirectory = "/home/${userSettings.username}";
   home.stateVersion = "25.05";
 
-  home.packages = [
+  home.packages = with pkgs ; [
     yafetch
   ];
 
