@@ -64,24 +64,19 @@
   
   # Additional git-related packages
   environment.systemPackages = with pkgs; [
-    # Git GUI tools
-    gitAndTools.gitk
-    gitAndTools.git-cola
-    
-    # Git utilities
-    gitAndTools.gitFull
+    # Git with all features (provides gitk)
+    gitFull
+    # Git Cola GUI
+    git-cola
+    # Git Flow extension
     gitAndTools.gitflow
+    # Git Extras (if available)
     gitAndTools.git-extras
-    
-    # Git credential helpers
-    gitAndTools.git-credential-manager
-    
-    # Git hosting integration
-    gitAndTools.hub
-    gitAndTools.lab
-    
-    # Git visualization
-    gitAndTools.git-quick-stats
-    gitAndTools.git-recent
+    # Git Credential Manager (if available)
+    git-credential-manager
+    # GitHub CLI (modern replacement for hub)
+    gh
+    # GitLab CLI (if available)
+    glab
   ];
 } 
