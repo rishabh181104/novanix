@@ -42,10 +42,18 @@
         };
       };
     };
+# homeConfigurations.${systemSettings.hostname} = home-manager.lib.homeManagerConfiguration {
+#   inherit pkgs;
+#   modules = [ ./modules/home.nix ];
+# };
   };
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     stylix = {
       url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
