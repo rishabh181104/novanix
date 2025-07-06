@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 {
-  nixpkgs.config.allowUnfree = true;
+  # Set nixpkgs.config.allowUnfree = true; globally in configuration.nix
 # programs.firefox.enable = true;
   environment.systemPackages = with pkgs ; [
     google-chrome

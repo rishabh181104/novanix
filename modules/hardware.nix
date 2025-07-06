@@ -13,5 +13,7 @@
 # boot.bootspec.extensions = {
 #   "org.secureboot.osRelease" = config.environment.etc."os-release".source;
 # };
+  # Custom hardware settings go here. This is NOT the generated hardware.nix.
+  # Example: enable redistributable firmware
   hardware.enableRedistributableFirmware = true;
 }
