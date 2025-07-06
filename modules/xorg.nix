@@ -5,9 +5,9 @@
     enable = true;
     videoDrivers = [ "nvidia" ];
     windowManager.qtile.enable = true;
-          displayManager.gdm.enable = false;
-      displayManager.sddm.enable = false;
-      displayManager.lightdm.enable = false;
+    displayManager.gdm.enable = false;
+    displayManager.sddm.enable = false;
+    displayManager.lightdm.enable = true;
     displayManager.sessionCommands = ''
       xrandr --output eDP-1 --mode "1920x1080" --rate "60.01"
       xrandr --output eDP-2 --mode "1920x1080" --rate "60.01"

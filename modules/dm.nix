@@ -2,7 +2,6 @@
 {
 
   services = {
-# Ensure proper display manager
     displayManager = {
       defaultSession = "hyprland";
       autoLogin = {
