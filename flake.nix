@@ -29,11 +29,11 @@
   };
   in {
     nixosConfigurations = {
-      novanix = nixpkgs.lib.nixosSystem {
+      ${systemSettings.hostname} = nixpkgs.lib.nixosSystem {
         system = systemSettings.system;
         modules = [
           ./configuration.nix
-          stylix.nixosModules.stylix
+            stylix.nixosModules.stylix
         ];
         specialArgs = {
           userSettings = userSettings;
