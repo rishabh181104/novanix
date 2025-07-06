@@ -2,7 +2,7 @@
 
 {
   home.username = userSettings.username;
-  home.homeDirectory = "/home/${userSettings.username}/novanix";
+  home.homeDirectory = "/home/${userSettings.username}";
   home.stateVersion = "25.05";
 
   home.packages = with pkgs ; [

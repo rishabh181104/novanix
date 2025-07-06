@@ -15,42 +15,39 @@
     };
 
 # ----- USER SETTINGS ----- #
-  userSettings = rec {
+  userSettings = {
     username = "nova";
     name = "rishabh181104";
     email = "rishabhhaldiya18@gmail.com";
     dotfilesDir = "~/novanix";
     theme = "gruvbox-dark-hard";
     wm = "hyprland";
-    wmType = if ((wm == "hyprland") || (wm == "plasma")) then "wayland" else "x11";
     browser = "brave";
     term = "alacritty";
     editor = "neovide";
   };
-  lib = nixpkgs.lib ;
+
+  lib = nixpkgs.lib;
   in {
-    nixosConfigurations = {
-      ${systemSettings.hostname} = nixpkgs.lib.nixosSystem {
-        system = systemSettings.system;
-        modules = [
-          ./configuration.nix
-            stylix.nixosModules.stylix
-            home-manager.nixosModules.home-manager
-            {
-              home-manager = {
-                useUserPackages = true;
-                useGlobalPkgs = true;
-                users.${userSettings.username} = import ./modules/home.nix {
-                  inherit userSettings systemSettings;
-                };
+    nixosConfigurations.${systemSettings.hostname} = lib.nixosSystem {
+      inherit (systemSettings) system;
+      modules = [
+        ./configuration.nix
+          stylix.nixosModules.stylix
+          home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              useUserPackages = true;
+              useGlobalPkgs = true;
+              extraSpecialArgs = {
+                inherit userSettings systemSettings;
               };
-            }
-        ];
-        specialArgs = {
-          userSettings = userSettings;
-          systemSettings = systemSettings;
-          stylix = stylix;
-        };
+              users.${userSettings.username} = import ./modules/home.nix;
+            };
+          }
+      ];
+      specialArgs = {
+        inherit inputs userSettings systemSettings;
       };
     };
   };
