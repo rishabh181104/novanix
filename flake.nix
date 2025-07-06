@@ -27,6 +27,7 @@
     term = "alacritty";
     editor = "neovide";
   };
+  lib = nixpkgs.lib ;
   in {
     nixosConfigurations = {
       ${systemSettings.hostname} = nixpkgs.lib.nixosSystem {
@@ -39,7 +40,9 @@
               home-manager = {
                 useUserPackages = true;
                 useGlobalPkgs = true;
-                users.${userSettings.username} = import ./home.nix;
+                users.${userSettings.username} = import ./home.nix {
+                  inherit userSettings systemSettings;
+                };
               };
             }
         ];

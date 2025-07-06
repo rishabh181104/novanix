@@ -11,11 +11,11 @@
   imports = [
     ./hardware.nix
     ./modules/packages.nix
-    ./modules/stylix.nix
-    ./modules/network.nix
+    (import ./modules/stylix.nix { inherit userSettings systemSettings; })
+    (import ./modules/network.nix { inherit userSettings systemSettings; })
     ./modules/dm.nix
     ./modules/dev.nix
-    ./modules/user.nix
+    (import ./modules/user.nix { inherit userSettings systemSettings; })
     ./modules/xorg.nix
     ./modules/fonts.nix
     ./modules/power.nix
@@ -30,7 +30,7 @@
     ./modules/virtual-machine.nix
     ./modules/extra-packages.nix
     ./modules/bluetooth.nix
-    ./modules/git.nix
+    (import ./modules/git.nix { inherit userSettings; })
   ];
 
   system.stateVersion = "25.05"; # Did you read the comment?
