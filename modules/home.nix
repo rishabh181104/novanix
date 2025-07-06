@@ -1,8 +1,8 @@
-{ pkgs, userSettings, systemSettings, ... }:
+{ config, pkgs, userSettings, systemSettings, ... }:
 
 {
   home.username = userSettings.username;
-  home.homeDirectory = systemSettings.hostname;
+  home.homeDirectory = "/home/${userSettings.username}/novanix";
   home.stateVersion = "25.05";
 
   home.packages = with pkgs ; [
